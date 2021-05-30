@@ -14,4 +14,8 @@ public class UserService {
     public Optional<BankUser> findById(Integer id){
         return userRepository.findById(id);
     }
+    
+    public Optional<BankUser> findByName(String name){
+        return userRepository.findAll().stream().filter(e -> e.getLogin().equals(name)).findFirst();
+    }
 }

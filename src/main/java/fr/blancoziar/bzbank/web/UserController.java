@@ -44,7 +44,7 @@ public class UserController {
 
     @GetMapping("/connect")
     public ResponseEntity connect(@RequestParam String name, @RequestParam String password) {
-        Optional<BankUser> u = userService.findById(1);
+        Optional<BankUser> u = userService.findByName(name);
         if(u.isPresent()){
             BankUser user = u.get();
             if(user.getPassword().equals(password))  {
