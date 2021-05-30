@@ -4,4 +4,4 @@ Developped on netbeans/Windows
 
 Main class : BzbankApplication 
 
-Lauching on localhost:8080
+deployed : https://bz-bank.herokuapp.com/
