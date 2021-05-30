@@ -2,6 +2,7 @@ package fr.blancoziar.bzbank.web;
 
 import fr.blancoziar.bzbank.Entities.AuthToken;
 import fr.blancoziar.bzbank.Entities.BankUser;
+import fr.blancoziar.bzbank.Pair;
 import fr.blancoziar.bzbank.Utils;
 import fr.blancoziar.bzbank.repositiories.AccountRepository;
 import fr.blancoziar.bzbank.repositiories.AuthTokenRepository;
@@ -10,7 +11,6 @@ import fr.blancoziar.bzbank.services.AuthService;
 import fr.blancoziar.bzbank.services.UserService;
 
 import java.util.Optional;
-import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,9 +63,9 @@ public class UserController {
     @GetMapping("/account")
     public ResponseEntity seeAccount(@RequestParam String token){
         Pair<Boolean,Integer> p = authService.isValid(token);
-        if (!p.getKey())
+        if (!p.getFirst())
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
-        BankUser u = userService.findById(p.getValue()).get();
+        BankUser u = userService.findById(p.getSecond()).get();
         AccountController acc = new AccountController(u.getAcc().getAccName(), u.getAcc().getMoney().intValue());
         return ResponseEntity.ok(acc);
     }

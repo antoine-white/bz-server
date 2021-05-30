@@ -1,12 +1,12 @@
 package fr.blancoziar.bzbank.services;
 
 import fr.blancoziar.bzbank.Entities.AuthToken;
+import fr.blancoziar.bzbank.Pair;
 import fr.blancoziar.bzbank.repositiories.AuthTokenRepository;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
